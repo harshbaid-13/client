@@ -1,39 +1,39 @@
 import React from 'react';
-import {Link ,useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
-import { useState , useEffect } from 'react';
+import { useState, useEffect } from 'react';
 // import {db} from "../db.js";
 
 const AllPosts = () => {
-  const [posts,setPosts] =useState( [] )
+  const [posts, setPosts] = useState([])
 
   const cat = useLocation().search
 
-  useEffect(()=>{
+  useEffect(() => {
     const fetchData = async () => {
-      try{
-        const res= await axios.get(`/api/posts${cat}`);
+      try {
+        const res = await axios.get(`/api/posts${cat}`);
         setPosts(res.data);
       }
-      catch(err){
+      catch (err) {
         console.log(err);
       }
     }
     fetchData()
-  },[cat]);
+  }, [cat]);
 
-  const getText = (html)=>{
-    const doc =new DOMParser().parseFromString(html,"text/html")
+  const getText = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html")
     return doc.body.textContent
   }
 
   return (
     <div className='allposts'>
       <div className="posts">
-        {posts.map((post)=>(
+        {posts?.map((post) => (
           <div className="post" key={post.id}>
             <div className="img">
-              <img src={`../upload/${post.img}`} alt=""/>
+              <img src={`../upload/${post.img}`} alt="" />
             </div>
             <div className="content">
               <Link className="link" to={`/post/${post.id}`}>
