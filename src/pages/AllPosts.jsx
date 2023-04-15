@@ -30,7 +30,8 @@ const AllPosts = () => {
   return (
     <div className='allposts'>
       <div className="posts">
-        {posts?.map((post) => (
+        {/* {console.log(posts)} */}
+        {posts.length > 0 ? posts.map((post) => (
           <div className="post" key={post.id}>
             <div className="img">
               <img src={`../upload/${post.img}`} alt="" />
@@ -43,7 +44,7 @@ const AllPosts = () => {
               <button>Read More...</button>
             </div>
           </div>
-        ))}
+        )) : <></>}
       </div>
     </div>
   )
