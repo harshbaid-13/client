@@ -31,7 +31,7 @@ const AllPosts = () => {
     <div className='allposts'>
       <div className="posts">
         {/* {console.log(posts)} */}
-        {posts.length > 0 ? posts.map((post) => (
+        {posts.length > 0 ? posts?.map((post) => (
           <div className="post" key={post.id}>
             <div className="img">
               <img src={`../upload/${post.img}`} alt="" />
